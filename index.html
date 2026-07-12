@@ -91,6 +91,9 @@ nav button.active{color:var(--gold)}
 .lesson-sec .ltxt{font-size:15px;line-height:1.6;white-space:pre-line;color:#e9e0d0}
 .viz{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:12.5px;line-height:1.5;white-space:pre;overflow-x:auto;background:rgba(0,0,0,.35);border:1px solid var(--line2);border-radius:14px;padding:16px;color:var(--gold)}
 .btn-done{background:linear-gradient(90deg,var(--ok),#16a34a);color:#04210f}
+.jhint{background:linear-gradient(135deg,rgba(245,197,24,.10),rgba(255,122,26,.05));border:1px solid var(--line)}
+.jhint-t{font-weight:700;font-size:15px;margin-bottom:6px;color:var(--gold)}
+.jhint-b{font-size:13.5px;line-height:1.55;color:#e9e0d0}
 @media(min-width:900px){
 body{padding:0 0 48px 260px}
 .wrap{max-width:none;margin:0}
@@ -154,7 +157,13 @@ const LEVELS=[
       viz:`Hot-Cue-Farbsystem:\n 🟢 Grün  = Start des mixbaren Beats (Intro)\n 🔴 Rot   = Drop / hier startet der Song richtig\n 🟡 Gelb  = Outro / Startpunkt für den Übergang`,
       ex:`Import-Routine: Track reinziehen → Rekordbox analysiert → Grid-Check (liegt das Raster genau auf den Kicks?) → grünen Hot Cue auf den ersten sauberen Beat → gelben auf den Outro-Start → My-Tag 🟢/🟡/🔴 je nach Energie.`,
       task:`Importier 5 Tracks (z.B. aus der Übungs-Playlist deines Guides) und bereite jeden komplett vor: Grid checken, mindestens einen Hot Cue setzen, Energie-Tag vergeben.`,
-      hw:`Leg deine Drei-Säulen-Ordnerstruktur an (House / Techno / RnB) und sortier deine ersten Tracks ein. Eine saubere Basis wächst leichter mit.`}}
+      hw:`Leg deine Drei-Säulen-Ordnerstruktur an (House / Techno / RnB) und sortier deine ersten Tracks ein. Eine saubere Basis wächst leichter mit.`}},
+    {t:"Üben wie ein Profi — dein Trainingssystem",l:{
+      why:`Fortschritt kommt nicht von „viel", sondern von „fokussiert". Erfahrene DJs trainieren mit System — und genau das trennt die, die nach 3 Monaten auflegen, von denen, die nach 3 Jahren noch rumeiern.\n\nDie Trainings-Regel:\n- 3–4 Sessions pro Woche, je 30–60 Minuten. Kurz und regelmäßig schlägt selten und lang.\n- Nimm jede Übungs-Session auf.\n- Lass die Aufnahme 1–2 Tage liegen und hör sie dann KRITISCH an — mit Abstand hörst du Fehler, die dir live entgehen.\n- Hol dir ehrliches Feedback von jemandem, der es besser kann.\n\nUnd das wichtigste Prinzip überhaupt: SAUBER SCHLÄGT FANCY. Zwei, drei saubere Übergänge, die sitzen, sind mehr wert als zehn fancy Tricks, die daneben gehen. Übe wenige Dinge, bis sie unauffällig gut sind — nicht viele Dinge halb.`,
+      viz:`Der Übungs-Kreislauf:\n\n  ÜBEN ──► AUFNEHMEN ──► LIEGEN LASSEN (1-2 Tage)\n    ▲                              │\n    │                              ▼\n  FEEDBACK ◄──── KRITISCH ANHÖREN ◄─┘`,
+      ex:`Statt „ich leg jetzt mal 2 Stunden auf" nimmst du dir für eine Session EIN Ziel vor: „heute nur der Bass-Swap zwischen zwei House-Tracks, 30 Minuten". Aufnehmen, morgen anhören, eine Sache notieren, die du verbessern willst.`,
+      task:`Plan dir für diese Woche 3 feste Übungs-Slots in den Kalender (je 30–45 Min). Nimm jede Session mit Rekordbox oder OBS auf. Für die erste Session reicht ein Ziel: sauber zwei Tracks starten und ineinander faden.`,
+      hw:`Hör dir deine erste Aufnahme mit 1 Tag Abstand an und schreib GENAU EINE Sache ins Journal, die du nächste Session besser machen willst. Eine Sache — nicht zehn.`}}
   ]},
   {n:"DJ-Grundlagen",e:"🥁",topics:[
     {t:"BPM & Beat verstehen",l:{
@@ -192,7 +201,13 @@ const LEVELS=[
       viz:`SYNC macht:        SYNC macht NICHT:\n ✓ BPM angleichen    ✗ Phrasing (wann)\n ✓ Beatgrid koppeln  ✗ Track-Auswahl\n                     ✗ Grid-Fehler heilen`,
       ex:`Zwei sauber gegridde House-Tracks: SYNC drücken, beide laufen perfekt parallel. Bei einem RnB-Track mit live eingespielten Drums kann SYNC danebenliegen — dann musst du mit dem Jogwheel manuell nachhelfen.`,
       task:`Leg zwei House-Tracks auf, drück auf beiden SYNC und starte sie zusammen auf einer Phrasengrenze. Hör, wie sie parallel laufen. Dann probier dasselbe mit einem RnB-Track und achte, ob es driftet.`,
-      hw:`Verlass dich nicht blind auf Sync. Prüf mit den Ohren, ob die Kicks wirklich aufeinander sitzen — die gelbe Taste ist ein Helfer, nicht dein Ersatz-Gehör.`}}
+      hw:`Verlass dich nicht blind auf Sync. Prüf mit den Ohren, ob die Kicks wirklich aufeinander sitzen — die gelbe Taste ist ein Helfer, nicht dein Ersatz-Gehör.`}},
+    {t:"Crowd & Chat Reading — die Menschen lesen",l:{
+      why:`Die wichtigste Skill hat nichts mit Technik zu tun: das richtige spielen, was die Leute gerade hören wollen. Ein technisch perfekter Mix mit dem falschen Track leert den Raum. Ein simpler Übergang mit dem richtigen Track füllt ihn.\n\nIm Club liest du die Tanzfläche: Füllt sie sich oder leert sie sich? Gehen die Hände hoch? Bei welchem Track zieht die Energie an? Daraus baust du den nächsten Block.\n\nFür dich am Twitch-Stream ist der CHAT deine Tanzfläche. Kommt Reaktion auf einen Track? Fragt jemand nach einem Genre? Wird's still? Das ist dein Feedback in Echtzeit — nutz es. Ein Genre-Wechsel per Kanalpunkte oder eine Track-Ansage im Chat bindet die Community wie eine volle Tanzfläche.`,
+      viz:`Signal          ►  Deine Reaktion\n─────────────────────────────────────\nChat geht ab     ►  Richtung halten, Energie steigern\nChat wird still  ►  Bekannteren/Vocal-Track bringen\n Genre-Wunsch    ►  aufgreifen, wenn es in den Flow passt\n Neue Zuschauer  ►  kurz abholen, Vibe erklären`,
+      ex:`Du fährst einen tiefen Techno-Block und der Chat wird ruhig. Statt stur weiterzuziehen, holst du einen bekannten Vocal-House-Track raus — sofort kommt Reaktion. Du hast den Raum gelesen und reagiert, statt deine Playlist abzuarbeiten.`,
+      task:`Hör dir ein Set an (Club-Aufnahme oder Twitch-VOD) und achte NUR auf die Reaktionen: Wo zieht die Energie an, wo bricht sie ein? Rate bei jedem Track, warum der DJ ihn genau JETZT gespielt hat.`,
+      hw:`Überleg dir 3 „sichere" Tracks, die bei deiner Zielgruppe fast immer ziehen (deine Anker für den Fall, dass es still wird). Notier sie im Journal.`}}
   ]},
   {n:"Beatmatching",e:"🎚️",topics:[{t:"Tempo per Pitch-Fader angleichen"},{t:"Beats per Jogwheel angleichen"},{t:"Manuelles Beatmatching ohne Sync"},{t:"Drift hören & live korrigieren"}]},
   {n:"Mixing-Grundlagen",e:"🎛️",topics:[{t:"Gain-Staging (Pegel sauber einstellen)"},{t:"EQ-Grundlagen: Low / Mid / High"},{t:"Bass-Swap-Technik"},{t:"Filter gezielt einsetzen"},{t:"Lautstärke & Headroom verstehen"},{t:"Erster komplett sauberer Übergang"}]},
@@ -200,16 +215,30 @@ const LEVELS=[
   {n:"Harmonic Mixing",e:"🎼",topics:[{t:"Tonarten-Basics (Dur/Moll)"},{t:"Camelot Wheel verstehen & anwenden"},{t:"Key-Analyse in Rekordbox nutzen"},{t:"Harmonische Übergänge üben"}]},
   {n:"Creative DJing",e:"✨",topics:[{t:"Loops kreativ einsetzen"},{t:"FX dosieren (Echo, Reverb, Filter)"},{t:"Layering & Acapellas"},{t:"Eigenen Mashup-Moment bauen"}]},
   {n:"Profi-Sets",e:"🎪",topics:[{t:"Set-Dramaturgie planen"},{t:"Energieverlauf über 60 Minuten steuern"},{t:"Komplettes Set aufnehmen"},{t:"Eigenes Set kritisch analysieren"}]},
-  {n:"Streaming DJ",e:"📡",topics:[{t:"OBS-Szenen & Overlays bauen"},{t:"Audio-Routing (Rekordbox → OBS) live testen"},{t:"Kamera & Licht einrichten"},{t:"Branding & Kanal-Design"},{t:"Erster Test-Stream"},{t:"Community-Aufbau starten"}]}
+  {n:"Streaming DJ",e:"📡",topics:[{t:"OBS-Szenen & Overlays bauen"},{t:"Audio-Routing (Rekordbox → OBS) live testen"},{t:"Kamera & Licht einrichten"},{t:"Branding & Kanal-Design"},{t:"Erster Test-Stream"},{t:"Community-Aufbau starten"}]},
+  {n:"Producer & Artist",e:"🎹",topics:[
+    {t:"Grundlagen der Musikproduktion (DAW)"},
+    {t:"Eigene Edits & Bootlegs bauen"},
+    {t:"Deine sonische Identität & Branding",l:{
+      why:`Ab hier hörst du auf, nur Tracks anderer zu spielen, und fängst an, ERKENNBAR zu sein. Die Trends für 2026 sind eindeutig: Können schlägt Ausrüstung, und was dich unverwechselbar macht, ist deine Identität — nicht dein Controller.\n\nEine sonische Identität heißt: Wenn jemand 30 Sekunden in deinen Stream reinhört, weiß er, dass DU das bist. Das entsteht aus einer klaren Handschrift — bestimmte Genres, ein wiederkehrender Vibe, eigene Edits, ein roter Faden im Sound. Dazu kommt die sichtbare Marke: konsistentes Kanal-Design, Wiedererkennungswert, eine Story, die zu dir passt.\n\nUnd der Karriere-Pfad dahinter (aus mehreren Profi-Quellen): erst Auflegen sicher beherrschen → dann Marke & Community → dann eigene Musik produzieren → dann größere Bookings. Produktion ist kein Nebending, sondern der Schritt, der aus einem DJ einen Artist macht.`,
+      viz:`Vom DJ zum Artist:\n\n[Auflegen sicher] ► [Marke & Community]\n                          │\n                          ▼\n [eigene Musik] ◄──────────┘\n        │\n        ▼\n [Bookings & Reichweite]`,
+      ex:`Statt „irgendein House-Stream" wirst du „der Deep-&-Melodic-Techno-Stream mit den eigenen Edits am Freitagabend". Klarer Slot, klares Genre, klarer Sound — genau das merken sich Leute und kommen wieder.`,
+      task:`Schreib deine sonische Identität in einem Satz auf: „Ich bin der DJ, der ___ spielt, und man erkennt mich an ___." Wenn du das nicht klar sagen kannst, ist genau das deine nächste Baustelle.`,
+      hw:`Hör in 3 DJs/Streamer rein, die eine klare Identität haben. Notier für jeden in einem Stichwort, WAS sie erkennbar macht — und was du davon für dich adaptieren willst (nicht kopieren).`}},
+    {t:"Community & Fanbase aufbauen"},
+    {t:"Eigene Tracks releasen"}
+  ]}
 ];
-const SKILLS=["Beatmatching","EQ & Mixing","Phrasing","Harmonic Mixing","Set-Aufbau","Streaming-Setup"];
+const SKILLS=["Beatmatching","EQ & Mixing","Phrasing","Harmonic Mixing","Crowd/Chat Reading","Set-Aufbau","Streaming-Setup","Musikproduktion"];
 let D=load();
 let S={view:"dash",open:{},journalText:"",lesson:null};
 
 function load(){
-  try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&d.done)return d;}catch(e){}
-  const skills={};SKILLS.forEach(s=>skills[s]=0);
-  return {done:{},skills:skills,journal:[]};
+  let d;try{d=JSON.parse(localStorage.getItem(KEY));}catch(e){}
+  if(!d||!d.done)d={done:{},skills:{},journal:[]};
+  if(!d.skills)d.skills={};
+  SKILLS.forEach(s=>{if(typeof d.skills[s]!=="number")d.skills[s]=0;});
+  return d;
 }
 function save(){localStorage.setItem(KEY,JSON.stringify(D));}
 function set(p){S=Object.assign({},S,p);render();}
@@ -316,6 +345,10 @@ function renderPath(root){
 }
 
 function renderJournal(root){
+  const hint=div("card jhint");
+  hint.appendChild(el("div","jhint-t","🔁  So übst du wie ein Profi"));
+  hint.appendChild(el("div","jhint-b","3–4× pro Woche, je 30–60 Min · jede Session aufnehmen · 1–2 Tage liegen lassen · kritisch anhören · EINE Sache notieren, die du verbessern willst. Sauber schlägt fancy."));
+  root.appendChild(hint);
   const form=div("card");form.appendChild(el("h2",null,"Neue Übungs-Session"));
   const ta=document.createElement("textarea");
   ta.placeholder="Was hast du geübt? Was lief gut, was noch nicht?";

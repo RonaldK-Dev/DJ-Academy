@@ -29,8 +29,10 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 - Daten `D` (persistiert): `{done:{"<level>-<topicIdx>":true}, skills:{name:0..100}, journal:[{id,date,text}]}`
 - UI-State `S` (flüchtig): `{view:"dash"|"path"|"lesson"|"journal", open:{levelIdx:bool}, journalText, lesson:{li,i}|null}`
 - `set(p)` → merge in `S` → `render()` leert `#root` und baut neu; Daten-Änderungen gehen über `save()` (localStorage)
-- Konstanten: `LEVELS` (9 Level) und `SKILLS` (6 Selbsteinschätzungs-Skills)
-- **Themen-Struktur:** jedes `topic` ist ein Objekt `{t:"Titel", l?:{why,viz?,ex?,task,hw}}`. Fehlt `l`, gibt es (noch) keine Lektion — Thema ist dann nur abhakbar. Lektions-Inhalte aktuell für **Level 0 (5) + Level 1 (6)** ausgeschrieben, Rest sind Titel-Platzhalter. Insgesamt 43 Themen.
+- Konstanten: `LEVELS` (10 Level, 0–9) und `SKILLS` (8 Selbsteinschätzungs-Skills, inkl. Crowd/Chat Reading + Musikproduktion)
+- **Themen-Struktur:** jedes `topic` ist ein Objekt `{t:"Titel", l?:{why,viz?,ex?,task,hw}}`. Fehlt `l`, gibt es (noch) keine Lektion — Thema ist dann nur abhakbar. Ausgeschriebene Lektionen (14): Level 0 (6, inkl. „Üben wie ein Profi"), Level 1 (7, inkl. „Crowd & Chat Reading"), Level 9 (1, „Sonische Identität & Branding"). Rest sind Titel-Platzhalter. Insgesamt 50 Themen.
+- **Skill-Migration:** `load()` ergänzt fehlende `SKILLS`-Keys in gespeicherten Daten mit 0 — so überleben alte localStorage-Stände das Hinzufügen neuer Skills, ohne dass Slider NaN werden.
+- **Inhaltliche Quellenbasis:** Lektionen zu Lernmethodik/Crowd-Reading/Identität stützen sich auf die Recherche in `03 Bereiche/DJ & Streaming/DJ-Lernwege — Recherche 2026.md` (vier DJ-Guides, analysiert 2026-07-12). Kern-Prinzip „Sauber schlägt fancy" zieht sich durch.
 - Lektions-Felder: `why` (Erklärung), `viz` (ASCII-Visualisierung, monospace `<pre class="viz">`, optional), `ex` (In der Praxis, optional), `task` (Übung), `hw` (Hausaufgabe). Inhalte sind auf Ronalds reales Setup zugeschnitten (FLX4, Rekordbox, JBL PartyBox, Techno/House/RnB) und konsistent zu den Vault-Guides.
 - Abgeleitete Werte: `levelProgress(li)`, `totalProgress()`, `currentLevel()` (= erstes Level < 100%)
 
@@ -49,15 +51,16 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 - Commits auf Deutsch mit Begründung + Co-Authored-By Claude
 - Verifikation im Browser-Preview (Port 4323), Mobile (375×812) und Desktop prüfen
 
-## Aktueller Stand (v0.5)
+## Aktueller Stand (v0.6)
 
-✅ Lernpfad mit 9 Leveln / 43 Themen, Fortschritts-Tracking, Skills, Journal, PWA-Shell, SW-Offline-Cache
+✅ Lernpfad mit 10 Leveln (0–9) / 50 Themen, Fortschritts-Tracking, 8 Skills, Journal, PWA-Shell, SW-Offline-Cache
 ✅ Live auf GitHub Pages: https://ronaldk-dev.github.io/DJ-Academy/
 ✅ Modernes Glasmorphismus-Design mit Ambient-Glow, großem Hero, Hover-Effekten (v0.4)
-✅ **Lektions-System (v0.5):** klickbare Themen öffnen echte Lektionen (Erklärung/Viz/Praxis/Übung/Hausaufgabe). Level 0 + 1 voll ausgeschrieben (11 Lektionen)
+✅ **Lektions-System (v0.5):** klickbare Themen öffnen echte Lektionen (Erklärung/Viz/Praxis/Übung/Hausaufgabe)
+✅ **Recherche-basierter Ausbau (v0.6):** Lektionen „Üben wie ein Profi" (L0) + „Crowd & Chat Reading" (L1), neues Level 9 „Producer & Artist", Skills um Crowd-Reading + Produktion erweitert, Journal mit Übungsmethodik-Hinweis. 14 Lektionen gesamt.
 
 ### Offene Punkte / Ideen
-- **Lektions-Inhalte für Level 2–8 nachfüllen** (aktuell nur Titel-Platzhalter). Struktur steht, es fehlt nur der Content pro `topic.l`
+- **Lektions-Inhalte für Level 2–8 nachfüllen** (aktuell nur Titel-Platzhalter). Struktur steht, es fehlt nur der Content pro `topic.l`. Level 2–4 (Beatmatching/Mixing) aus Fachwissen, Quellen sind dort dünn
 - PNG-Icons (aktuell nur `icon.svg` — reicht für Chromium, iOS-Homescreen-Icon fehlt)
 - Set-Analyse-Bereich (Feedback zu aufgenommenen Mixen)
 - Optional später: Supabase-Sync wie BBQ-Lab, wenn Multi-Device gebraucht wird

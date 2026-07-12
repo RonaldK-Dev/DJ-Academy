@@ -19,8 +19,9 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 - **localStorage** als einzige Persistenz (Key `dj-academy`) — kein Backend in v0.1
 - **PWA**: `manifest.json` + `sw.js` (Stale-While-Revalidate, Cache `dj-academy-v1` — bei Shell-Änderungen hochzählen)
 - **Google Fonts**: Bebas Neue (Headlines), DM Sans (Body)
-- **Farbschema** (Ronalds Wunsch, kein "AI-Look" mit Cyan/Magenta): Gold `--gold:#f5c518` als Hauptfarbe, Orange `--orange:#ff7a1a` und Rot `--red:#ef2d56` (Verläufe/Akzente), warmer dunkler Hintergrund `#0d0a08`. Lila wurde auf Ronalds Feedback wieder entfernt.
-- **Layout**: Mobile = Ein-Spalten-Feed mit Bottom-Nav (bis 900px); Desktop `@media(min-width:900px)` = fixe Sidebar links (240px, Logo via `nav::before`, Header versteckt) + Karten-Grid (`auto-fill minmax(400px,1fr)`), Hero-Karte spannt via `.card:has(.hero)` die volle Breite
+- **Farbschema** (Ronalds Wunsch, kein "AI-Look" mit Cyan/Magenta): Gold `--gold:#f5c518` als Hauptfarbe, Orange `--orange:#ff7a1a` und Rot `--red:#ef3a3a` (Verläufe/Akzente), tiefes warmes Near-Black `--bg:#0a0806`. Lila wurde auf Ronalds Feedback wieder entfernt.
+- **Design-Sprache (v0.4, inspiriert von academy.djsoundaustria.com):** Glasmorphismus — Karten sind halbtransparent (`--glass`) mit `backdrop-filter:blur(16px)`, Sidebar/Nav mit `blur(20px)`. Ambient-Glow über `body::before` (fixierte radiale Gold/Orange/Rot-Gradients). Große Ecken (22px Karten, 99px Pills/Buttons/Bars). Großer Hero mit Bebas-Neue-Headline `clamp(46px,11vw,76px)`, Eyebrow (letter-spacing .28em) und Corner-Glow. Hover: Karten/Buttons heben sich (`translateY`) + Glow. Bebas Neue auch für `.stat-num` und Section-`h2` (uppercase).
+- **Layout**: Mobile = Ein-Spalten-Feed (in `.wrap`, max 560px, zentriert) mit Bottom-Nav (bis 900px); Desktop `@media(min-width:900px)` = fixe Sidebar links (260px, Logo via `nav::before`, Header versteckt) + Karten-Grid (`auto-fill minmax(380px,1fr)`), Hero spannt via `.card:has(.hero),.hero` die volle Breite. Header + main liegen in `<div class="wrap">`, nav ist fixed daneben.
 - **Dev-Server**: Python http.server, **Port 4323**, via `D:\second-brain\Projekte\.claude\launch.json` (Name: `DJ-Academy`)
 
 ## Architektur
@@ -45,9 +46,11 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 - Commits auf Deutsch mit Begründung + Co-Authored-By Claude
 - Verifikation im Browser-Preview (Port 4323), Mobile (375×812) und Desktop prüfen
 
-## Aktueller Stand (v0.1)
+## Aktueller Stand (v0.4)
 
 ✅ Lernpfad mit 9 Leveln / 44 Themen, Fortschritts-Tracking, Skills, Journal, PWA-Shell, SW-Offline-Cache
+✅ Live auf GitHub Pages: https://ronaldk-dev.github.io/DJ-Academy/
+✅ Modernes Glasmorphismus-Design mit Ambient-Glow, großem Hero, Hover-Effekten (v0.4)
 
 ### Offene Punkte / Ideen
 - PNG-Icons (aktuell nur `icon.svg` — reicht für Chromium, iOS-Homescreen-Icon fehlt)

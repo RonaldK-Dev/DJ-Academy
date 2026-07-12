@@ -1,4 +1,4 @@
-const CACHE="dj-academy-v4";
+const CACHE="dj-academy-v5";
 const SHELL=["./","./index.html","./manifest.json","./icon.svg"];
 
 self.addEventListener("install",e=>{

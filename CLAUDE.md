@@ -19,7 +19,8 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 - **localStorage** als einzige Persistenz (Key `dj-academy`) — kein Backend in v0.1
 - **PWA**: `manifest.json` + `sw.js` (Stale-While-Revalidate, Cache `dj-academy-v1` — bei Shell-Änderungen hochzählen)
 - **Google Fonts**: Bebas Neue (Headlines), DM Sans (Body)
-- **Farbschema** (Ronalds Wunsch, kein "AI-Look" mit Cyan/Magenta): Gold `--gold:#f5c518` als Hauptfarbe, Neon-Lila `--lila:#b14aff` (Skills, Akzente), Orange `--orange:#ff7a1a` und Rot `--red:#ef2d56` (Verläufe), warmer dunkler Hintergrund `#0d0a08`
+- **Farbschema** (Ronalds Wunsch, kein "AI-Look" mit Cyan/Magenta): Gold `--gold:#f5c518` als Hauptfarbe, Orange `--orange:#ff7a1a` und Rot `--red:#ef2d56` (Verläufe/Akzente), warmer dunkler Hintergrund `#0d0a08`. Lila wurde auf Ronalds Feedback wieder entfernt.
+- **Layout**: Mobile = Ein-Spalten-Feed mit Bottom-Nav (bis 900px); Desktop `@media(min-width:900px)` = fixe Sidebar links (240px, Logo via `nav::before`, Header versteckt) + Karten-Grid (`auto-fill minmax(400px,1fr)`), Hero-Karte spannt via `.card:has(.hero)` die volle Breite
 - **Dev-Server**: Python http.server, **Port 4323**, via `D:\second-brain\Projekte\.claude\launch.json` (Name: `DJ-Academy`)
 
 ## Architektur

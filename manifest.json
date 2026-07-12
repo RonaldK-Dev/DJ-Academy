@@ -1,0 +1,18 @@
+{
+  "name": "DJ Academy",
+  "short_name": "DJ Academy",
+  "description": "Persönlicher DJ-Lernpfad: Level, Fortschritt, Skills und Übungs-Journal",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0b12",
+  "theme_color": "#0b0b12",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

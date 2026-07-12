@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>DJ Academy</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b0b12;--card:#15151f;--line:#26263a;--txt:#e8e8f0;--mut:#8b8ba3;--acc:#22d3ee;--acc2:#e879f9;--ok:#10b981}
+html,body{background:var(--bg);color:var(--txt);font-family:"DM Sans",sans-serif;-webkit-tap-highlight-color:transparent}
+body{max-width:560px;margin:0 auto;min-height:100vh;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+h1,h2,.lvl-num{font-family:"Bebas Neue",sans-serif;letter-spacing:.03em}
+header{position:sticky;top:0;z-index:10;background:rgba(11,11,18,.92);backdrop-filter:blur(8px);padding:14px 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+header h1{font-size:26px;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sub{color:var(--mut);font-size:12px}
+main{padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.card h2{font-size:19px;margin-bottom:10px;color:var(--txt)}
+.hero{display:flex;align-items:center;gap:14px}
+.hero .badge{min-width:64px;height:64px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#1d1d2c,#0e0e16);border:2px solid var(--acc);box-shadow:0 0 18px rgba(34,211,238,.25)}
+.hero .badge .lvl-num{font-size:26px;color:var(--acc);line-height:1}
+.hero .badge .lvl-lab{font-size:9px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+.hero .info{flex:1}
+.hero .info .name{font-weight:700;font-size:16px}
+.hero .info .mut{color:var(--mut);font-size:13px;margin-top:2px}
+.bar{height:10px;border-radius:5px;background:#0e0e16;border:1px solid var(--line);overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .3s}
+.pct{font-size:12px;color:var(--mut);margin-top:4px}
+.topic{display:flex;align-items:center;gap:10px;padding:10px 6px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none}
+.topic:last-child{border-bottom:none}
+.topic .box{width:22px;height:22px;min-width:22px;border-radius:6px;border:2px solid var(--mut);display:flex;align-items:center;justify-content:center;font-size:14px;color:#0b0b12;transition:all .15s}
+.topic.done .box{background:var(--ok);border-color:var(--ok)}
+.topic.done .lab{color:var(--mut);text-decoration:line-through}
+.topic .lab{font-size:14px;line-height:1.35}
+.lvl-head{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.lvl-head .lvl-num{font-size:22px;color:var(--acc);min-width:26px;text-align:center}
+.lvl-head .t{flex:1}
+.lvl-head .t .n{font-weight:700;font-size:15px}
+.lvl-head .arrow{color:var(--mut);transition:transform .2s}
+.lvl-head.open .arrow{transform:rotate(90deg)}
+.lvl-body{margin-top:8px;border-top:1px solid var(--line)}
+.card.complete{border-color:rgba(16,185,129,.45)}
+.card.complete .lvl-num{color:var(--ok)}
+.skill{margin-bottom:14px}
+.skill:last-child{margin-bottom:2px}
+.skill .row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.skill .row b{font-weight:500}
+.skill .row span{color:var(--acc);font-weight:700;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;appearance:none;-webkit-appearance:none;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--acc) 0%,var(--acc2) var(--v),#0e0e16 var(--v));border:1px solid var(--line);outline:none}
+input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--acc);cursor:pointer}
+textarea{width:100%;background:#0e0e16;border:1px solid var(--line);border-radius:10px;color:var(--txt);padding:10px;font-family:inherit;font-size:16px;min-height:80px;resize:vertical}
+textarea:focus{border-color:var(--acc);outline:none}
+.btn{display:block;width:100%;margin-top:10px;padding:12px;border:none;border-radius:10px;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#0b0b12;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit}
+.btn:active{opacity:.85}
+.jentry{padding:12px 0;border-bottom:1px solid var(--line)}
+.jentry:last-child{border-bottom:none}
+.jentry .jd{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:4px}
+.jentry .jd button{background:none;border:none;color:#ef4444;font-size:12px;cursor:pointer;font-family:inherit}
+.jentry .jt{font-size:14px;white-space:pre-wrap;line-height:1.45}
+.empty{color:var(--mut);font-size:14px;text-align:center;padding:14px 0}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;display:flex;background:rgba(11,11,18,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:10}
+nav button{flex:1;background:none;border:none;color:var(--mut);padding:10px 0 8px;font-family:inherit;font-size:11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button .ico{font-size:20px}
+nav button.active{color:var(--acc)}
+.next-topic{display:flex;align-items:center;gap:10px;padding:10px;border:1px dashed var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer}
+.next-topic .dot{width:8px;height:8px;min-width:8px;border-radius:50%;background:var(--acc2);box-shadow:0 0 8px var(--acc2)}
+.next-topic .lab{font-size:14px}
+.next-topic .lvl{margin-left:auto;font-size:11px;color:var(--mut);white-space:nowrap}
+</style>
+</head>
+<body>
+<header><h1>DJ ACADEMY</h1><span class="sub">Dein Weg zum Pro-DJ</span></header>
+<main id="root"></main>
+<nav id="nav"></nav>
+<script>
+const KEY="dj-academy";
+const LEVELS=[
+  {n:"Orientierung",e:"🎧",topics:["Was macht ein DJ? Rolle & Aufgaben verstehen","Equipment & Aufbau eines DJ-Setups verstehen","DDJ-FLX4 anschließen & in Rekordbox einrichten","Rekordbox-Oberfläche kennenlernen","Musik importieren, analysieren & organisieren"]},
+  {n:"DJ-Grundlagen",e:"🥁",topics:["BPM & Beat verstehen","Takt & Bars zählen (4/4)","Phrasen erkennen (16/32 Bars)","Cueing & Vorhören über Kopfhörer","Jogwheel-Basics (Nudge & Scratch-Mode)","Sync verstehen — was er tut und wann nicht"]},
+  {n:"Beatmatching",e:"🎚️",topics:["Tempo per Pitch-Fader angleichen","Beats per Jogwheel angleichen","Manuelles Beatmatching ohne Sync","Drift hören & live korrigieren"]},
+  {n:"Mixing-Grundlagen",e:"🎛️",topics:["Gain-Staging (Pegel sauber einstellen)","EQ-Grundlagen: Low / Mid / High","Bass-Swap-Technik","Filter gezielt einsetzen","Lautstärke & Headroom verstehen","Erster komplett sauberer Übergang"]},
+  {n:"Profi-Übergänge",e:"🔀",topics:["Phrase-Mixing in der Praxis","Energie lesen & gezielt aufbauen","Track-Auswahl fürs Mixing","Drei Übergangstechniken sicher beherrschen"]},
+  {n:"Harmonic Mixing",e:"🎼",topics:["Tonarten-Basics (Dur/Moll)","Camelot Wheel verstehen & anwenden","Key-Analyse in Rekordbox nutzen","Harmonische Übergänge üben"]},
+  {n:"Creative DJing",e:"✨",topics:["Loops kreativ einsetzen","FX dosieren (Echo, Reverb, Filter)","Layering & Acapellas","Eigenen Mashup-Moment bauen"]},
+  {n:"Profi-Sets",e:"🎪",topics:["Set-Dramaturgie planen","Energieverlauf über 60 Minuten steuern","Komplettes Set aufnehmen","Eigenes Set kritisch analysieren"]},
+  {n:"Streaming DJ",e:"📡",topics:["OBS-Szenen & Overlays bauen","Audio-Routing (Rekordbox → OBS) live testen","Kamera & Licht einrichten","Branding & Kanal-Design","Erster Test-Stream","Community-Aufbau starten"]}
+];
+const SKILLS=["Beatmatching","EQ & Mixing","Phrasing","Harmonic Mixing","Set-Aufbau","Streaming-Setup"];
+let D=load();
+let S={view:"dash",open:{},journalText:""};
+
+function load(){
+  try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&d.done)return d;}catch(e){}
+  const skills={};SKILLS.forEach(s=>skills[s]=0);
+  return {done:{},skills:skills,journal:[]};
+}
+function save(){localStorage.setItem(KEY,JSON.stringify(D));}
+function set(p){S=Object.assign({},S,p);render();}
+
+function div(cls){const d=document.createElement("div");if(cls)d.className=cls;return d;}
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+
+function levelProgress(li){
+  const t=LEVELS[li].topics;const done=t.filter((_,i)=>D.done[li+"-"+i]).length;
+  return {done:done,total:t.length,pct:Math.round(done/t.length*100)};
+}
+function totalProgress(){
+  let done=0,total=0;
+  LEVELS.forEach((l,li)=>{total+=l.topics.length;l.topics.forEach((_,i)=>{if(D.done[li+"-"+i])done++;});});
+  return {done:done,total:total,pct:total?Math.round(done/total*100):0};
+}
+function currentLevel(){
+  for(let i=0;i<LEVELS.length;i++){if(levelProgress(i).pct<100)return i;}
+  return LEVELS.length-1;
+}
+function toggleTopic(key){
+  if(D.done[key])delete D.done[key];else D.done[key]=true;
+  save();render();
+}
+
+function renderDash(root){
+  const cl=currentLevel(),tp=totalProgress(),lp=levelProgress(cl);
+  const hero=div("card");const h=div("hero");
+  const badge=div("badge");badge.appendChild(el("div","lvl-num",String(cl)));badge.appendChild(el("div","lvl-lab","Level"));
+  const info=div("info");
+  info.appendChild(el("div","name",LEVELS[cl].e+" "+LEVELS[cl].n));
+  info.appendChild(el("div","mut",lp.done+" / "+lp.total+" Themen in diesem Level"));
+  const b=div("bar");const bi=el("i");bi.style.width=lp.pct+"%";b.appendChild(bi);info.appendChild(b);
+  h.appendChild(badge);h.appendChild(info);hero.appendChild(h);root.appendChild(hero);
+
+  const total=div("card");total.appendChild(el("h2",null,"Gesamt-Fortschritt"));
+  const tb=div("bar");const tbi=el("i");tbi.style.width=tp.pct+"%";tb.appendChild(tbi);total.appendChild(tb);
+  total.appendChild(el("div","pct",tp.done+" von "+tp.total+" Themen · "+tp.pct+"%"));
+  root.appendChild(total);
+
+  const next=div("card");next.appendChild(el("h2",null,"Nächste Schritte"));
+  const open=[];
+  outer:for(let li=cl;li<LEVELS.length;li++){
+    for(let i=0;i<LEVELS[li].topics.length;i++){
+      if(!D.done[li+"-"+i]){open.push({li:li,i:i});if(open.length>=3)break outer;}
+    }
+  }
+  if(!open.length){next.appendChild(el("div","empty","Alles abgehakt — du bist durch! 🎉"));}
+  open.forEach(o=>{
+    const nt=div("next-topic");nt.appendChild(div("dot"));
+    nt.appendChild(el("div","lab",LEVELS[o.li].topics[o.i]));
+    nt.appendChild(el("div","lvl","Lvl "+o.li));
+    nt.onclick=()=>toggleTopic(o.li+"-"+o.i);
+    next.appendChild(nt);
+  });
+  root.appendChild(next);
+
+  const sk=div("card");sk.appendChild(el("h2",null,"Skills (Selbsteinschätzung)"));
+  SKILLS.forEach(name=>{
+    const w=div("skill");const row=div("row");
+    row.appendChild(el("b",null,name));const val=el("span",null,D.skills[name]+"%");row.appendChild(val);
+    const r=document.createElement("input");r.type="range";r.min=0;r.max=100;r.step=5;r.value=D.skills[name];
+    r.style.setProperty("--v",D.skills[name]+"%");
+    r.oninput=()=>{D.skills[name]=+r.value;val.textContent=r.value+"%";r.style.setProperty("--v",r.value+"%");};
+    r.onchange=()=>save();
+    w.appendChild(row);w.appendChild(r);sk.appendChild(w);
+  });
+  root.appendChild(sk);
+}
+
+function renderPath(root){
+  LEVELS.forEach((l,li)=>{
+    const lp=levelProgress(li);
+    const c=div("card"+(lp.pct===100?" complete":""));
+    const head=div("lvl-head"+(S.open[li]?" open":""));
+    head.appendChild(el("div","lvl-num",String(li)));
+    const t=div("t");t.appendChild(el("div","n",l.e+" "+l.n));
+    const b=div("bar");const bi=el("i");bi.style.width=lp.pct+"%";b.appendChild(bi);t.appendChild(b);
+    head.appendChild(t);
+    head.appendChild(el("div","arrow","▶"));
+    head.onclick=()=>{S.open[li]=!S.open[li];render();};
+    c.appendChild(head);
+    if(S.open[li]){
+      const body=div("lvl-body");
+      l.topics.forEach((topic,i)=>{
+        const key=li+"-"+i;
+        const row=div("topic"+(D.done[key]?" done":""));
+        row.appendChild(el("div","box",D.done[key]?"✓":""));
+        row.appendChild(el("div","lab",topic));
+        row.onclick=()=>toggleTopic(key);
+        body.appendChild(row);
+      });
+      c.appendChild(body);
+    }
+    root.appendChild(c);
+  });
+}
+
+function renderJournal(root){
+  const form=div("card");form.appendChild(el("h2",null,"Neue Übungs-Session"));
+  const ta=document.createElement("textarea");
+  ta.placeholder="Was hast du geübt? Was lief gut, was noch nicht?";
+  ta.value=S.journalText;
+  ta.oninput=()=>{S.journalText=ta.value;};
+  form.appendChild(ta);
+  const btn=el("button","btn","Session speichern");
+  btn.onclick=()=>{
+    const t=S.journalText.trim();if(!t)return;
+    D.journal.unshift({id:Date.now(),date:new Date().toISOString().slice(0,10),text:t});
+    save();set({journalText:""});
+  };
+  form.appendChild(btn);root.appendChild(form);
+
+  const list=div("card");list.appendChild(el("h2",null,"Übungs-Log"));
+  if(!D.journal.length)list.appendChild(el("div","empty","Noch keine Einträge — nach der ersten Session am FLX4 geht's hier los."));
+  D.journal.forEach(j=>{
+    const e=div("jentry");const jd=div("jd");
+    jd.appendChild(el("span",null,j.date));
+    const del=el("button",null,"löschen");
+    del.onclick=()=>{if(confirm("Eintrag löschen?")){D.journal=D.journal.filter(x=>x.id!==j.id);save();render();}};
+    jd.appendChild(del);
+    e.appendChild(jd);e.appendChild(el("div","jt",j.text));
+    list.appendChild(e);
+  });
+  root.appendChild(list);
+}
+
+function render(){
+  const root=document.getElementById("root");root.innerHTML="";
+  if(S.view==="dash")renderDash(root);
+  else if(S.view==="path")renderPath(root);
+  else renderJournal(root);
+  const nav=document.getElementById("nav");nav.innerHTML="";
+  [["dash","🎛️","Dashboard"],["path","🗺️","Lernpfad"],["journal","📓","Journal"]].forEach(([v,ico,lab])=>{
+    const b=document.createElement("button");if(S.view===v)b.className="active";
+    const i=el("div","ico",ico);b.appendChild(i);b.appendChild(el("div",null,lab));
+    b.onclick=()=>set({view:v});
+    nav.appendChild(b);
+  });
+}
+
+(function(){
+  if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
+  render();
+})();
+</script>
+</body>
+</html>

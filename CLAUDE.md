@@ -19,6 +19,7 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 - **localStorage** als einzige Persistenz (Key `dj-academy`) — kein Backend in v0.1
 - **PWA**: `manifest.json` + `sw.js` (Stale-While-Revalidate, Cache `dj-academy-v1` — bei Shell-Änderungen hochzählen)
 - **Google Fonts**: Bebas Neue (Headlines), DM Sans (Body)
+- **Farbschema** (Ronalds Wunsch, kein "AI-Look" mit Cyan/Magenta): Gold `--gold:#f5c518` als Hauptfarbe, Neon-Lila `--lila:#b14aff` (Skills, Akzente), Orange `--orange:#ff7a1a` und Rot `--red:#ef2d56` (Verläufe), warmer dunkler Hintergrund `#0d0a08`
 - **Dev-Server**: Python http.server, **Port 4323**, via `D:\second-brain\Projekte\.claude\launch.json` (Name: `DJ-Academy`)
 
 ## Architektur

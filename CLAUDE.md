@@ -48,7 +48,6 @@ Wie BBQ-Lab (siehe `../BBQ-Lab/CLAUDE.md` für die ausführlichen Konventionen):
 ✅ Lernpfad mit 9 Leveln / 44 Themen, Fortschritts-Tracking, Skills, Journal, PWA-Shell, SW-Offline-Cache
 
 ### Offene Punkte / Ideen
-- GitHub-Remote anlegen (RonaldK-Dev/DJ-Academy) und pushen — noch lokales Git
 - PNG-Icons (aktuell nur `icon.svg` — reicht für Chromium, iOS-Homescreen-Icon fehlt)
 - Lektions-Inhalte in der App (Erklärung/Übung/Hausaufgabe pro Thema) statt nur Checkliste
 - Set-Analyse-Bereich (Feedback zu aufgenommenen Mixen)
